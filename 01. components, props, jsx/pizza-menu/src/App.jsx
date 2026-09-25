@@ -1,3 +1,22 @@
+function Header() {
+    return <h1>Fast React Pizza Co.</h1>;
+}
+function Menu() {
+    return (
+        <div>
+            <h2>Our Menu</h2>
+            <Pizza />
+        </div>
+    );
+}
+function Footer() {
+    return (
+        <footer>
+            <p>{new Date().toLocaleTimeString()}. We are currently open!</p>
+        </footer>
+    );
+}
+
 function Pizza() {
     return (
         <div>
@@ -11,9 +30,9 @@ function Pizza() {
 function App() {
     return (
         <div>
-            <Pizza />
-            <Pizza />
-            <Pizza />
+            <Header />
+            <Menu />
+            <Footer />
         </div>
     );
 }
