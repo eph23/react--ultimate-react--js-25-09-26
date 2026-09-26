@@ -1,13 +1,31 @@
 function Header() {
-    return <h1>Fast React Pizza Co.</h1>;
+    return (
+        <div className="header">
+            <h1>Fast React Pizza Co.</h1>;
+        </div>
+    );
+}
+
+function Pizza() {
+    return (
+        <div className="pizza">
+            <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
+            <div>
+                <h3>Pizza Spinaci</h3>
+                <p>Tomato, mozarella, spinach, and ricotta cheese</p>
+            </div>
+        </div>
+    );
 }
 
 function Menu() {
     return (
-        <div>
+        <main className="menu">
             <h2>Our Menu</h2>
-            <Pizza />
-        </div>
+            <div className="pizzas">
+                <Pizza />
+            </div>
+        </main>
     );
 }
 
@@ -25,19 +43,9 @@ function Footer() {
     );
 }
 
-function Pizza() {
-    return (
-        <div>
-            <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
-            <h2>Pizza Spinaci</h2>
-            <p>Tomato, mozarella, spinach, and ricotta cheese</p>
-        </div>
-    );
-}
-
 function App() {
     return (
-        <div>
+        <div className="container">
             <Header />
             <Menu />
             <Footer />
