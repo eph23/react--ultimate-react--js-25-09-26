@@ -1,5 +1,3 @@
-import pizzaData from "./assets/data";
-
 function Header() {
     return (
         <div className="header">
@@ -9,15 +7,16 @@ function Header() {
 }
 
 function Pizza(props) {
+    console.log(props);
     return (
-        <li className="pizza">
-            <img src={props.pizzaObj.photoName} alt={name} />
+        <div className="pizza">
+            <img src={props.photoName} alt={props.name} />
             <div>
-                <h3>{props.pizzaObj.name}</h3>
-                <p>{props.pizzaObj.ingredients}</p>
-                <span>{props.pizzaObj.price}</span>
+                <h3>{props.name}</h3>
+                <p>{props.ingredients}</p>
+                <span>{props.price + 3}</span>
             </div>
-        </li>
+        </div>
     );
 }
 
@@ -25,11 +24,20 @@ function Menu() {
     return (
         <main className="menu">
             <h2>Our Menu</h2>
-            <ul className="pizzas">
-                {pizzaData.map((pizza) => {
-                    return <Pizza key={pizza.name} pizzaObj={pizza} />;
-                })}
-            </ul>
+            <div className="pizzas">
+                <Pizza
+                    name="Pizza Spinaci"
+                    ingredients="Tomato, spinach, and ricotta cheese"
+                    photoName="pizzas/spinaci.jpg"
+                    price={10}
+                />
+                <Pizza
+                    name="Pizza Funghi"
+                    ingredients="Tomato, mushrooms, and mozzarella cheese"
+                    photoName="pizzas/funghi.jpg"
+                    price={12}
+                />
+            </div>
         </main>
     );
 }
@@ -42,7 +50,7 @@ function Footer() {
     console.log(isOpen);
 
     return (
-        <footer className="footer">
+        <footer>
             <p>{new Date().toLocaleTimeString()}. We are currently open!</p>
         </footer>
     );
