@@ -29,14 +29,12 @@ function Menu() {
     return (
         <main className="menu">
             <h2>Our Menu</h2>
-            {numPizzas > 0 ? (
+            {numPizzas > 0 && (
                 <ul className="pizzas">
                     {pizzas.map((pizza) => {
                         return <Pizza key={pizza.name} pizzaObj={pizza} />;
                     })}
                 </ul>
-            ) : (
-                <p>We are still working on our menu. Please check back later</p>
             )}
         </main>
     );
@@ -51,16 +49,11 @@ function Footer() {
 
     return (
         <footer className="footer">
-            {isOpen ? (
+            {isOpen && (
                 <div className="order">
                     <p>We are open until {closeHour}:00</p>
                     <button className="btn">Order</button>
                 </div>
-            ) : (
-                <p>
-                    We are happy to welcome you between {openHour}:00 to{" "}
-                    {closeHour}:00
-                </p>
             )}
         </footer>
     );
