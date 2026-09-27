@@ -22,20 +22,14 @@ function Pizza(props) {
 }
 
 function Menu() {
-    const pizzas = pizzaData;
-    // const pizzas = [];
-    const numPizzas = pizzas.length;
-
     return (
         <main className="menu">
             <h2>Our Menu</h2>
-            {numPizzas > 0 && (
-                <ul className="pizzas">
-                    {pizzas.map((pizza) => {
-                        return <Pizza key={pizza.name} pizzaObj={pizza} />;
-                    })}
-                </ul>
-            )}
+            <ul className="pizzas">
+                {pizzaData.map((pizza) => {
+                    return <Pizza key={pizza.name} pizzaObj={pizza} />;
+                })}
+            </ul>
         </main>
     );
 }
@@ -49,12 +43,7 @@ function Footer() {
 
     return (
         <footer className="footer">
-            {isOpen && (
-                <div className="order">
-                    <p>We are open until {closeHour}:00</p>
-                    <button className="btn">Order</button>
-                </div>
-            )}
+            <p>{new Date().toLocaleTimeString()}. We are currently open!</p>
         </footer>
     );
 }
