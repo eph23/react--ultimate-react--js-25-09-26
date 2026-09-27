@@ -29,22 +29,12 @@ function Menu() {
     return (
         <main className="menu">
             <h2>Our Menu</h2>
-
             {numPizzas > 0 ? (
-                <>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Explicabo voluptate consequuntur debitis
-                        doloribus, aliquam commodi voluptates placeat incidunt
-                        sit. Ad perspiciatis dicta esse sint assumenda doloribus
-                        eos non nobis enim?
-                    </p>
-                    <ul className="pizzas">
-                        {pizzas.map((pizza) => {
-                            return <Pizza key={pizza.name} pizzaObj={pizza} />;
-                        })}
-                    </ul>
-                </>
+                <ul className="pizzas">
+                    {pizzas.map((pizza) => {
+                        return <Pizza key={pizza.name} pizzaObj={pizza} />;
+                    })}
+                </ul>
             ) : (
                 <p>We are still working on our menu. Please check back later</p>
             )}
