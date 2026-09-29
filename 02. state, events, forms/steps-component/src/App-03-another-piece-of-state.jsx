@@ -12,18 +12,18 @@ function App() {
 
     function handlePrevious() {
         if (step > 1) {
-            setStep((currentStep) => currentStep - 1);
+            setStep(step - 1);
         }
     }
 
     function handleNext() {
         if (step < messages.length) {
-            setStep((currentStep) => currentStep + 1);
+            setStep(step + 1);
         }
     }
 
     function handleClose() {
-        setIsOpen((open) => !open);
+        setIsOpen(!isOpen);
     }
 
     return (
