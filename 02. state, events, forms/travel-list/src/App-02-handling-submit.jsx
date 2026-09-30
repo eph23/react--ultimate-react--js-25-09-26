@@ -1,41 +1,18 @@
-import { useState } from "react";
 import initialItems from "./assets/data";
 
 function Logo() {
     return <h1>🏝️Far Away🧳</h1>;
 }
 function Form() {
-    const [quantity, setQuantity] = useState(1);
-    const [description, setDescription] = useState("");
-
     function handleSubmit(event) {
         event.preventDefault();
-
-        if (!description) return;
-
-        const newItem = {
-            description,
-            quantity,
-            package: false,
-            id: Date.now(),
-        };
-        console.log(newItem);
-
-        setQuantity(1);
-        setDescription("");
-    }
-
-    function handleChangeQuantity(event) {
-        setQuantity(Number(event.target.value));
-    }
-    function handleChangeDescription(event) {
-        setDescription(event.target.value);
+        console.log(event);
     }
 
     return (
         <form className="add-form" onSubmit={handleSubmit}>
             <h3>What do you need for your trip?</h3>
-            <select onChange={handleChangeQuantity} value={quantity}>
+            <select id="">
                 {Array.from({ length: 20 }, (_, index) => index + 1).map(
                     (num) => (
                         <option value={num} key={num}>
@@ -44,12 +21,7 @@ function Form() {
                     ),
                 )}
             </select>
-            <input
-                type="text"
-                placeholder="Item..."
-                value={description}
-                onChange={handleChangeDescription}
-            />
+            <input type="text" placeholder="Item..." />
             <button>Add</button>
         </form>
     );
