@@ -59,29 +59,23 @@ function Form({ onAddItems }) {
     );
 }
 
-function Item({ item, onDeleteItem }) {
+function Item({ item }) {
     return (
         <li>
             <span style={item.packed ? { textDecoration: "line-through" } : {}}>
                 {item.quantity} {item.description}
             </span>
-            <button onClick={() => onDeleteItem(item.id)}>❌</button>
+            <button>❌</button>
         </li>
     );
 }
 
-function PackingList({ items, onDeleteItem }) {
+function PackingList({ items }) {
     return (
         <div className="list">
             <ul>
                 {items.map((item) => {
-                    return (
-                        <Item
-                            item={item}
-                            key={item.id}
-                            onDeleteItem={onDeleteItem}
-                        />
-                    );
+                    return <Item item={item} key={item.id} />;
                 })}
             </ul>
         </div>
@@ -99,24 +93,17 @@ function Stats() {
 }
 
 function App() {
-    // const [items, setItems] = useState(initialItems);
     const [items, setItems] = useState([]);
 
     function handleAddItems(item) {
         setItems((currentItems) => [...currentItems, item]);
     }
 
-    function handleDeleteItem(id) {
-        setItems((currentItems) =>
-            currentItems.filter((item) => item.id !== id),
-        );
-    }
-
     return (
         <div className="app">
             <Logo />
             <Form onAddItems={handleAddItems} />
-            <PackingList items={items} onDeleteItem={handleDeleteItem} />
+            <PackingList items={items} />
             <Stats />
         </div>
     );
