@@ -17,7 +17,7 @@ function Form({ onAddItems }) {
         const newItem = {
             description,
             quantity,
-            package: false,
+            packed: false,
             id: Date.now(),
         };
         console.log(newItem);
