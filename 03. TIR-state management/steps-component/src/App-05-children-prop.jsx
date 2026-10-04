@@ -20,14 +20,6 @@ function Button({ textColor, backgroundColor, onClick, children }) {
     );
 }
 
-function StepMessage({ step, children }) {
-    return (
-        <h3 className="message">
-            Step {step}: {children}
-        </h3>
-    );
-}
-
 function App() {
     const [step, setStep] = useState(1);
     const [isOpen, setIsOpen] = useState(true);
@@ -62,10 +54,9 @@ function App() {
                         <div className={step >= 3 ? "active" : ""}>3</div>
                     </div>
 
-                    <StepMessage className="message" step={step}>
-                        {messages[step - 1]}
-                    </StepMessage>
-
+                    <p className="message">
+                        Ste {step}: {messages[step - 1]}
+                    </p>
                     <div className="buttons">
                         <Button
                             backgroundColor="#7950f2"
