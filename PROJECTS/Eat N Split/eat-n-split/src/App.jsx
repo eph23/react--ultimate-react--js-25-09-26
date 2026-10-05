@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { initialFriends } from "./assets/data";
 
-function Button({ children }) {
-    return <button className="button">{children}</button>;
+function Button({ onClick, children }) {
+    return (
+        <button onClick={onClick} className="button">
+            {children}
+        </button>
+    );
 }
 
 function Friend({ name, imageURL, balance }) {
@@ -79,12 +84,20 @@ function FormSplitBill() {
 }
 
 function App() {
+    const [showAddFriend, setShowAddFriend] = useState(false);
+
+    function handleShowAddFriend() {
+        setShowAddFriend((showFriend) => !showFriend);
+    }
+
     return (
         <div className="app">
             <div className="sidebar">
                 <FriendsList />
-                <FormAddFriend />
-                <Button>Add friend</Button>
+                {showAddFriend && <FormAddFriend />}
+                <Button onClick={handleShowAddFriend}>
+                    {!showAddFriend ? "Add friend" : "Close"}
+                </Button>
             </div>
             <div>
                 <FormSplitBill />
