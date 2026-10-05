@@ -39,11 +39,55 @@ function FriendsList() {
     );
 }
 
+function FormAddFriend() {
+    return (
+        <form className="form-add-friend">
+            <label>🧑‍🤝‍🧑Friend's name</label>
+            <input type="text" placeholder="Your friend's name" />
+
+            <label>🖼️Friend's image</label>
+            <input type="text" placeholder="Image URL..." />
+
+            <Button className="button">Add</Button>
+        </form>
+    );
+}
+
+function FormSplitBill() {
+    return (
+        <form className="form-split-bill">
+            <h2>Split Bill with X</h2>
+
+            <label>💰Bill Value</label>
+            <input type="text" />
+
+            <label>🙍‍♂️Your Expenses</label>
+            <input type="text" />
+
+            <label>🧑‍🤝‍🧑X's Expenses</label>
+            <input type="text" disabled />
+
+            <label>💳Who is paying?</label>
+            <select>
+                <option value="user">You</option>
+                <option value="friend">X</option>
+            </select>
+
+            <Button className="button">Split bill</Button>
+        </form>
+    );
+}
+
 function App() {
     return (
         <div className="app">
             <div className="sidebar">
                 <FriendsList />
+                <FormAddFriend />
+                <Button>Add friend</Button>
+            </div>
+            <div>
+                <FormSplitBill />
             </div>
         </div>
     );
