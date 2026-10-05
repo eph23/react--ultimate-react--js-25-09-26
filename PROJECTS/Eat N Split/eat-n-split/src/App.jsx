@@ -29,7 +29,7 @@ function Friend({ friend, onSelect, selectedFriend }) {
                     {friend.balance > 0
                         ? `${friend.name} owe ${friend.name} $${friend.balance}`
                         : friend.balance < 0
-                          ? `You owe's ${friend.name} $${friend.balance}`
+                          ? `You owe's ${friend.name} $${Math.abs(friend.balance)}`
                           : `You and ${friend.name} are even`}
                 </span>
             </p>
@@ -110,7 +110,7 @@ function FormAddFriend({ onAddFriend }) {
     );
 }
 
-function FormSplitBill({ selectedFriend }) {
+function FormSplitBill({ selectedFriend, onSplitBill }) {
     const [bill, setBill] = useState("");
     const [paidByUser, setPaidByUser] = useState("");
     const [whoIsPaying, setWhoIsPaying] = useState("user");
@@ -131,8 +131,15 @@ function FormSplitBill({ selectedFriend }) {
         setWhoIsPaying(event.target.value);
     }
 
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        if (!bill || !paidByUser) return;
+        onSplitBill(whoIsPaying === "user" ? paidByFriend : -paidByUser);
+    }
+
     return (
-        <form className="form-split-bill">
+        <form className="form-split-bill" onSubmit={handleSubmit}>
             <h2>Split Bill with {selectedFriend.name}</h2>
 
             <label>💰Bill Value</label>
@@ -177,6 +184,18 @@ function App() {
         setShowAddFriend(false);
     }
 
+    function handleSplitBill(value) {
+        setFriends((friends) =>
+            friends.map((friend) =>
+                friend.id === selectedFriend.id
+                    ? { ...friend, balance: friend.balance + value }
+                    : friend,
+            ),
+        );
+
+        setSelectedFriend(null);
+    }
+
     return (
         <div className="app">
             <div className="sidebar">
@@ -194,7 +213,10 @@ function App() {
             </div>
             <div>
                 {selectedFriend && (
-                    <FormSplitBill selectedFriend={selectedFriend} />
+                    <FormSplitBill
+                        selectedFriend={selectedFriend}
+                        onSplitBill={handleSplitBill}
+                    />
                 )}
             </div>
         </div>
