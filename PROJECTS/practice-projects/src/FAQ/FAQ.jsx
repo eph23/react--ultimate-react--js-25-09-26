@@ -18,12 +18,12 @@ function AccordionItem({ item, index, currentOpen, setCurrentOpen }) {
     );
 }
 
-function Accordion() {
+function Accordion({ items }) {
     const [currentOpen, setCurrentOpen] = useState(null);
 
     return (
         <div className="accordion">
-            {faqs.map((item, index) => (
+            {items.map((item, index) => (
                 <AccordionItem
                     key={item.id}
                     item={item}
@@ -37,7 +37,7 @@ function Accordion() {
 }
 
 function App() {
-    return <Accordion />;
+    return <Accordion items={faqs} />;
 }
 
 export default App;
