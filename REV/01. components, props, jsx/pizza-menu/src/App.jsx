@@ -1,5 +1,13 @@
 import { pizzaData } from "./data";
 
+function Header() {
+    return (
+        <div>
+            <h1>Header</h1>
+        </div>
+    );
+}
+
 function Pizza() {
     return (
         <div>
@@ -10,11 +18,27 @@ function Pizza() {
     );
 }
 
+function Menu() {
+    return (
+        <div>
+            <h1>Our Menu</h1>
+            <Pizza />
+        </div>
+    );
+}
+
+function Footer() {
+    return (
+        <footer>{new Date().toLocaleTimeString()} We are currently open</footer>
+    );
+}
+
 function App() {
     return (
         <div>
-            <h1>Hello React</h1>
-            <Pizza />
+            <Header />
+            <Menu />
+            <Footer />
         </div>
     );
 }
