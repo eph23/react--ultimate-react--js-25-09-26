@@ -2,9 +2,9 @@ import { pizzaData } from "./data";
 
 function Header() {
     return (
-        <div>
-            <h1>Header</h1>
-        </div>
+        <header className="header">
+            <h1>Fast React Pizza Co.</h1>;
+        </header>
     );
 }
 
@@ -12,7 +12,7 @@ function Pizza() {
     return (
         <div>
             <img src="pizzas/prosciutto.jpg" alt="Pizza Prosciutto" />
-            <h2>Pizza Prosciutto</h2>
+            <h3>Pizza Prosciutto</h3>
             <p>Tomato, mozarella, ham, aragula, and burrata cheese</p>
         </div>
     );
@@ -20,10 +20,10 @@ function Pizza() {
 
 function Menu() {
     return (
-        <div>
-            <h1>Our Menu</h1>
+        <main className="menu">
+            <h2>Our Menu</h2>
             <Pizza />
-        </div>
+        </main>
     );
 }
 
@@ -35,13 +35,15 @@ function Footer() {
     console.log(isOpen);
 
     return (
-        <footer>{new Date().toLocaleTimeString()} We are currently open</footer>
+        <footer className="footer">
+            {new Date().toLocaleTimeString()} We are currently open
+        </footer>
     );
 }
 
 function App() {
     return (
-        <div>
+        <div className="container">
             <Header />
             <Menu />
             <Footer />
