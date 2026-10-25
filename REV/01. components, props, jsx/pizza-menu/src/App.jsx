@@ -46,6 +46,28 @@ function Menu() {
     );
 }
 
+function OpenNotice(openHour, closeHour) {
+    return (
+        <div className="order">
+            <p>
+                We are open until {closeHour}:00. Come visit us or order online
+            </p>
+            <button className="btn">Order</button>
+        </div>
+    );
+}
+
+function CloseNotice(openHour, closeHour) {
+    return (
+        <div className="order">
+            <p>
+                We're happy to welcome you between {openHour}:00 and {closeHour}
+                :00
+            </p>
+        </div>
+    );
+}
+
 function Footer() {
     const hour = new Date().getHours();
     const openHour = 12;
@@ -55,18 +77,9 @@ function Footer() {
     return (
         <footer className="footer">
             {isOpen ? (
-                <div className="order">
-                    <p>
-                        We are open until {closeHour}:00. Come visit us or order
-                        online
-                    </p>
-                    <button className="btn">Order</button>
-                </div>
+                <OpenNotice closeHour={closeHour} openHour={openHour} />
             ) : (
-                <p>
-                    We're happy to welcome you between {openHour}:00 and{" "}
-                    {closeHour}:00
-                </p>
+                <CloseNotice />
             )}
         </footer>
     );
