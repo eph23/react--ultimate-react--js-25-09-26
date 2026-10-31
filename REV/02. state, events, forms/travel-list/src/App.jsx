@@ -1,3 +1,5 @@
+import { initialItems } from "./assets/data.js";
+
 function Logo() {
     return <h1>🌴Far Away🧳</h1>;
 }
@@ -12,8 +14,27 @@ function Forms() {
     }
 }
 
+function Item({ item }) {
+    return (
+        <li>
+            <span style={item.packed ? { textDecoration: "line-through" } : {}}>
+                {item.quantity} {item.description}
+            </span>
+            <button>❌</button>
+        </li>
+    );
+}
+
 function PackingList() {
-    return <div className="list">List</div>;
+    return (
+        <div className="list">
+            <ul>
+                {initialItems.map((item) => (
+                    <Item item={item} />
+                ))}
+            </ul>
+        </div>
+    );
 }
 
 function State() {
