@@ -8,12 +8,15 @@ function Header() {
     );
 }
 
-function Pizza() {
+function Pizza(props) {
     return (
-        <div>
-            <img src="pizzas/focaccia.jpg" alt="Focaccia" />
-            <h3>Focaccia</h3>
-            <p>Bread with italian olive oil and rosemary</p>
+        <div className="pizza">
+            <img src={props.photoName} alt={props.name} />
+            <div>
+                <h3>{props.name}</h3>
+                <p>{props.ingredients}</p>
+                <span>{props.price + 3}</span>
+            </div>
         </div>
     );
 }
@@ -22,7 +25,18 @@ function Menu() {
     return (
         <main className="menu">
             <h2>Our Menu</h2>
-            <Pizza />
+            <Pizza
+                name="Focaccia"
+                ingredients="Bread with italian olive oil and rosemary"
+                photoName="pizzas/focaccia.jpg"
+                price={10}
+            />
+            <Pizza
+                name="Pizza Funghi"
+                ingredients="Tomato, mushrooms"
+                photoName="pizzas/funghi.jpg"
+                price={12}
+            />
         </main>
     );
 }
