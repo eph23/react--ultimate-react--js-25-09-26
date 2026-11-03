@@ -1,7 +1,11 @@
 import { pizzaData } from "./assets/data.js";
 
 function Header() {
-    return <h1>Fast React Pizza Co.</h1>;
+    return (
+        <div className="header">
+            <h1>Fast React Pizza Co.</h1>
+        </div>
+    );
 }
 
 function Pizza() {
@@ -16,10 +20,10 @@ function Pizza() {
 
 function Menu() {
     return (
-        <div>
+        <main className="menu">
             <h2>Our Menu</h2>
             <Pizza />
-        </div>
+        </main>
     );
 }
 
@@ -28,22 +32,17 @@ function Footer() {
     const openHour = 12;
     const closeHour = 22;
     const isOpen = hour >= openHour && hour <= closeHour;
-    console.log(isOpen);
-
-    /* if (hour >= openHour && hour <= closeHour) {
-        alert(`We are currently open`);
-    } else {
-        alert(`Sorry we are closed`);
-    } */
 
     return (
-        <footer>{new Date().toLocaleTimeString()}.We're currently open</footer>
+        <footer className="footer">
+            {new Date().toLocaleTimeString()}.We're currently open
+        </footer>
     );
 }
 
 function App() {
     return (
-        <div>
+        <div className="container">
             <Header />
             <Menu />
             <Footer />
