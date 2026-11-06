@@ -8,16 +8,16 @@ function Header() {
     );
 }
 
-function Pizza(props) {
-    if (props.pizza.soldOut) return null;
+function Pizza({ pizza }) {
+    if (pizza.soldOut) return null;
 
     return (
         <li className="pizza">
-            <img src={props.pizza.photoName} alt={props.pizza.name} />
+            <img src={pizza.photoName} alt={pizza.name} />
             <div>
-                <h3>{props.pizza.name}</h3>
-                <p>{props.pizza.ingredients}</p>
-                <span>{props.pizza.price}</span>
+                <h3>{pizza.name}</h3>
+                <p>{pizza.ingredients}</p>
+                <span>{pizza.price}</span>
             </div>
         </li>
     );
@@ -45,25 +45,25 @@ function Menu() {
     );
 }
 
-function CloseNotice(props) {
+function OpenNotice({ closeHour }) {
     return (
         <div className="order">
             <p>
-                We are happy to welcome you between {props.openHour}:00 and{" "}
-                {props.closeHour}:00
+                We are currently open until {closeHour}:00. Come visit us or
+                order online
             </p>
+            <button className="btn">Order</button>
         </div>
     );
 }
 
-function OpenNotice(props) {
+function CloseNotice({ openHour, closeHour }) {
     return (
         <div className="order">
             <p>
-                We are currently open until {props.closeHour}:00. Come visit us
-                or order online
+                We are happy to welcome you between {openHour}:00 and{" "}
+                {closeHour}:00
             </p>
-            <button className="btn">Order</button>
         </div>
     );
 }
@@ -77,7 +77,7 @@ function Footer() {
     return (
         <footer className="footer">
             {isOpen ? (
-                <OpenNotice openHour={openHour} closeHour={closeHour} />
+                <OpenNotice openHour={openHour} />
             ) : (
                 <CloseNotice openHour={openHour} closeHour={closeHour} />
             )}
