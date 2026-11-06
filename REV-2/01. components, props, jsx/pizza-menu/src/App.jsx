@@ -45,34 +45,42 @@ function Menu() {
     );
 }
 
+function CloseNotice(props) {
+    return (
+        <div className="order">
+            <p>
+                We are happy to welcome you between {props.openHour}:00 and{" "}
+                {props.closeHour}:00
+            </p>
+        </div>
+    );
+}
+
+function OpenNotice(props) {
+    return (
+        <div className="order">
+            <p>
+                We are currently open until {props.closeHour}:00. Come visit us
+                or order online
+            </p>
+            <button className="btn">Order</button>
+        </div>
+    );
+}
+
 function Footer() {
     const hour = new Date().getHours();
     const openHour = 12;
     const closeHour = 22;
     const isOpen = hour >= openHour && hour <= closeHour;
 
-    if (!isOpen) {
-        return (
-            <footer className="footer">
-                <div className="order">
-                    <p>
-                        We are happy to welcome you between {openHour}:00 and{" "}
-                        {closeHour}:00
-                    </p>
-                </div>
-            </footer>
-        );
-    }
-
     return (
         <footer className="footer">
-            <div className="order">
-                <p>
-                    We are currently open until {closeHour}:00. Come visit us or
-                    order online
-                </p>
-                <button className="btn">Order</button>
-            </div>
+            {isOpen ? (
+                <OpenNotice openHour={openHour} closeHour={closeHour} />
+            ) : (
+                <CloseNotice openHour={openHour} closeHour={closeHour} />
+            )}
         </footer>
     );
 }
