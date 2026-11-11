@@ -1,6 +1,9 @@
+import { initialItems } from "./assets/data.js";
+
 function Logo() {
     return <h1>🌴Far Away🧳</h1>;
 }
+
 function Form() {
     return (
         <div className="add-form">
@@ -8,13 +11,33 @@ function Form() {
         </div>
     );
 }
+
+function Item({ item }) {
+    return (
+        <li>
+            <span style={item.packed ? { textDecoration: "line-through" } : {}}>
+                {item.quantity} {item.description}
+            </span>
+            <button>❌</button>
+        </li>
+    );
+}
+
 function PackingList() {
-    return <div className="list">List</div>;
+    return (
+        <div className="list">
+            <ul>
+                {initialItems.map((item) => (
+                    <Item item={item} key={item.id} />
+                ))}
+            </ul>
+        </div>
+    );
 }
 function Stats() {
     return (
         <footer className="stats">
-            <p>Start adding some items to your packing list</p>
+            <em>Start adding some items to your packing list</em>
         </footer>
     );
 }
