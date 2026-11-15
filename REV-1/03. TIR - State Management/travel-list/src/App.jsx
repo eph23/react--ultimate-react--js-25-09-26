@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { initialItems } from "./assets/data.js";
 
 function Logo() {
     return <h1>🌴Far Away🧳</h1>;
@@ -90,16 +89,33 @@ function PackingList({ items, onDeleteItem, onToggleItem }) {
     );
 }
 
-function State() {
+function State({ items }) {
+    if (!items.length) {
+        return (
+            <footer className="stats">
+                <em>Start adding some items to your packing list 🚀</em>
+            </footer>
+        );
+    }
+
+    const numItems = items.length;
+    const numPacked = items.filter((item) => item.packed).length;
+    const percentage = (numPacked / numItems) * 100;
+
     return (
         <footer className="stats">
-            <em>You have X items on your list, and you already packed X(X%)</em>
+            <em>
+                {percentage === 100
+                    ? "You got everything packed! Ready to go ✈️"
+                    : `You have ${numItems} items on your list, and you already packed
+                ${numPacked} (${percentage}%)`}
+            </em>
         </footer>
     );
 }
 
 function App() {
-    const [items, setItems] = useState(initialItems);
+    const [items, setItems] = useState([]);
 
     function handleAddItems(item) {
         setItems((items) => [...items, item]);
@@ -126,7 +142,7 @@ function App() {
                 onDeleteItem={handleDeleteItem}
                 onToggleItem={handleToggleItem}
             />
-            <State />
+            <State items={items} />
         </div>
     );
 }
