@@ -51,8 +51,7 @@ function TipCalculator() {
     const [myPercentage, setMyPercentage] = useState(0);
     const [friendsPercentage, setFriendsPercentage] = useState(0);
 
-    const avgPercentage = (myPercentage + friendsPercentage) / 2;
-    const tip = bill * (avgPercentage / 100);
+
 
     function handleSetBill(event) {
         setBill(Number(event.target.value));
