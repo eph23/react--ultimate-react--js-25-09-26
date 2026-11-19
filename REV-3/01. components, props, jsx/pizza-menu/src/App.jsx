@@ -1,3 +1,11 @@
+function Header() {
+    return (
+        <header className="header">
+            <h1>First React Pizza Co.</h1>
+        </header>
+    );
+}
+
 function Pizza() {
     return (
         <div>
@@ -8,12 +16,29 @@ function Pizza() {
     );
 }
 
+function Menu() {
+    return (
+        <main className="menu">
+            <Pizza />
+        </main>
+    );
+}
+
+function Footer() {
+    return (
+        <footer className="footer">
+            <p>We are currently open</p>
+        </footer>
+    );
+}
+
 function App() {
     return (
-        <div>
-            <h1>Hello React!</h1>
-            <Pizza />
-        </div>
+        <di className="container">
+            <Header />
+            <Menu />
+            <Footer />
+        </di>
     );
 }
 
