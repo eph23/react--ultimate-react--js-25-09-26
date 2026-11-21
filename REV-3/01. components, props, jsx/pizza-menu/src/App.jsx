@@ -1,3 +1,5 @@
+import PIZZA_DATA from "./assets/data";
+
 function Header() {
     return (
         <header className="header">
@@ -9,11 +11,19 @@ function Header() {
 function Pizza(props) {
     return (
         <div className="pizza">
-            <img src={props.photoName} alt={props.name} />
+            <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
             <div>
-                <h3>{props.name}</h3>
-                <p>{props.ingredients}</p>
-                <span>{props.price + 3}</span>
+                <h3>{props.pizzaObj.name}</h3>
+                <p>{props.pizzaObj.ingredients}</p>
+                <span>{props.pizzaObj.price + 3}</span>
+                {/* 
+                <img src={props.photoName} alt={props.name} />
+                <div>
+                    <h3>{props.name}</h3>
+                    <p>{props.ingredients}</p>
+                    <span>{props.price + 3}</span>
+                </div>
+                 */}
             </div>
         </div>
     );
@@ -24,18 +34,15 @@ function Menu() {
         <main className="menu">
             <h2>Our Menu</h2>
             <ul className="pizzas">
-                <Pizza
-                    name="Pizza Spinaci"
-                    ingredients="Tomato, mozarella, spinach, and ricotta cheese"
-                    photoName="pizzas/spinaci.jpg"
-                    price={10}
-                />
-                <Pizza
-                    name="Pizza Funghi"
-                    ingredients="Tomato, mushrooms, and ricotta cheese"
-                    photoName="pizzas/funghi.jpg"
-                    price={12}
-                />
+                {PIZZA_DATA.map((pizza) => (
+                    <Pizza pizzaObj={pizza} key={pizza.name} />
+                    /*  <Pizza
+                        name={pizza.name}
+                        ingredients={pizza.ingredients}
+                        photoName={pizza.photoName}
+                        price={pizza.price}
+                    /> */
+                ))}
             </ul>
         </main>
     );
@@ -56,11 +63,11 @@ function Footer() {
 
 function App() {
     return (
-        <di className="container">
+        <div className="container">
             <Header />
             <Menu />
             <Footer />
-        </di>
+        </div>
     );
 }
 
