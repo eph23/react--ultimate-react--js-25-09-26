@@ -19,7 +19,10 @@ function Pizza() {
 function Menu() {
     return (
         <main className="menu">
-            <Pizza />
+            <h2>Our Menu</h2>
+            <ul className="pizzas">
+                <Pizza />
+            </ul>
         </main>
     );
 }
