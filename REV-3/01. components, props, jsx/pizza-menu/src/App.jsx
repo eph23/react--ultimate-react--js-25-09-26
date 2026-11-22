@@ -16,14 +16,6 @@ function Pizza(props) {
                 <h3>{props.pizzaObj.name}</h3>
                 <p>{props.pizzaObj.ingredients}</p>
                 <span>{props.pizzaObj.price + 3}</span>
-                {/* 
-                <img src={props.photoName} alt={props.name} />
-                <div>
-                    <h3>{props.name}</h3>
-                    <p>{props.ingredients}</p>
-                    <span>{props.price + 3}</span>
-                </div>
-                 */}
             </div>
         </div>
     );
@@ -37,18 +29,14 @@ function Menu() {
     return (
         <main className="menu">
             <h2>Our Menu</h2>
-            {numPizzas > 0 && (
+            {numPizzas > 0 ? (
                 <ul className="pizzas">
                     {pizzas.map((pizza) => (
                         <Pizza pizzaObj={pizza} key={pizza.name} />
-                        /*  <Pizza
-                        name={pizza.name}
-                        ingredients={pizza.ingredients}
-                        photoName={pizza.photoName}
-                        price={pizza.price}
-                    /> */
                     ))}
                 </ul>
+            ) : (
+                <p>We are still working on our menu. Please come back later</p>
             )}
         </main>
     );
@@ -62,7 +50,7 @@ function Footer() {
 
     return (
         <footer className="footer">
-            {isOpen && (
+            {isOpen ? (
                 <div className="order">
                     <p>
                         We are open until {closeHour}:00. Come visit us or order
@@ -70,6 +58,11 @@ function Footer() {
                     </p>
                     <button className="btn">Open</button>
                 </div>
+            ) : (
+                <p>
+                    We are happy to welcome you between {openHour}:00 and{" "}
+                    {closeHour}:00
+                </p>
             )}
         </footer>
     );
