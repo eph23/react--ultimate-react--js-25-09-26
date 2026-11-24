@@ -11,15 +11,15 @@ function App() {
     const [step, setStep] = useState(1);
 
     function handleToggle() {
-        setIsOpen(!isOpen);
+        setIsOpen((isCurrentlyOpen) => !isCurrentlyOpen);
     }
 
     function handlePrevious() {
-        if (step > 1) setStep(step - 1);
+        if (step > 1) setStep((currentStep) => currentStep - 1);
     }
 
     function handleNext() {
-        if (step < messages.length) setStep(step + 1);
+        if (step < messages.length) setStep((currentStep) => currentStep + 1);
     }
 
     return (
