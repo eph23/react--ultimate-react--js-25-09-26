@@ -52,7 +52,7 @@ function App() {
                         />
                         <button onClick={handleIncreaseCount}>+</button>
                     </div>
-                    <p>Count: {}</p>
+                    <p>Count: {count}</p>
                 </div>
             </div>
             <div>
